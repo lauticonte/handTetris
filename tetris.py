@@ -237,7 +237,7 @@ def clear_rows(grid, locked):
 #Proxima figura
 def draw_next_shape(shape, surface):
     font = pygame.font.SysFont('britannic', 30)
-    label = font.render('Next Shape', 1, (255,255,255))
+    label = font.render('Próxima figura:', 1, (255,255,255))
 
     sx = top_left_x + play_width + 50
     sy = top_left_y + play_height/2 - 100
@@ -263,7 +263,7 @@ def draw_window(surface, grid, score=0):
 
     #Puntaje
     font = pygame.font.SysFont('britannic', 30)
-    label = font.render('Score: ' + str(score), 1, (255,255,255))
+    label = font.render('Puntaje: ' + str(score), 1, (255,255,255))
 
     sx = top_left_x + play_width + 50
     sy = top_left_y + play_height/2 - 100
@@ -299,7 +299,7 @@ def main(win):
     next_piece = get_shape()
     clock = pygame.time.Clock()
     fall_time = 0
-    fall_speed_real = 0.45
+    fall_speed_real = 0.35
     fall_speed = fall_speed_real
     level_time = 0
     score = 0
@@ -429,7 +429,7 @@ def main(win):
         pygame.display.update()
 
         if check_lost(locked_positions):
-            draw_text_middle(win, "YOU LOST!", 80, (255,255,255))
+            draw_text_middle(win, "PERDISTE!", 80, (255,255,255))
             pygame.display.update()
             pygame.time.delay(1500)
             run = False
@@ -439,13 +439,13 @@ def main_menu(win):
     run = True
     while run:
         win.fill((0,0,0))
-        draw_text_middle(win, 'Press Any Key To Start', 60, (255,255,255))
+        draw_text_middle(win, "PRESIONA EL BOTÓN ROJO PARA COMENZAR", 40, (255,255,255))
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
             if event.type == pygame.KEYDOWN:
-                pygame.mixer.music.play()
+                pygame.mixer.music.play(loops = -1)
                 main(win)
 
     pygame.display.quit()
